@@ -10,7 +10,7 @@ service_cpu = 256
 
 service_memory = 512
 
-ssm_listener = ""
+ssm_listener = "/linutxtips/ecs/lb/listener"
 
 #### SSM VPC PARAMETERS ####
 
