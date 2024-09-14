@@ -14,9 +14,9 @@ ssm_listener = "/linutxtips/ecs/lb/listener"
 
 ssm_vpc_id = "/linuxtips-vpc/vpc/vpc_id"
 
-environment_variables = []
+#environment_variables = []
 
-capabilities = ["EC2"]
+#capabilities = ["EC2"]
 
 ssm_private_subnet_1 = "/linuxtips-vpc/private_subnet_1a"
 
