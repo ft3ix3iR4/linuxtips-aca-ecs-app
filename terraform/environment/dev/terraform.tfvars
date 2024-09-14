@@ -14,9 +14,19 @@ ssm_listener = "/linutxtips/ecs/lb/listener"
 
 ssm_vpc_id = "/linuxtips-vpc/vpc/vpc_id"
 
-#environment_variables = []
+environment_variables = []
 
-#capabilities = ["EC2"]
+capabilities = ["EC2"]
+
+service_healthcheck = {
+  healthy_threshold   = 3
+  unhealthy_threshold = 10
+  timeout             = 10
+  interval            = 60
+  matcher             = "200-399"
+  path                = "/healthcheck"
+  port                = 8080
+}
 
 ssm_private_subnet_1 = "/linuxtips-vpc/private_subnet_1a"
 
