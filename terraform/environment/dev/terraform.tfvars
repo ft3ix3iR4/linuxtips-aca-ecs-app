@@ -12,9 +12,9 @@ service_memory = 512
 
 ssm_listener = "/linutxtips/ecs/lb/listener"
 
-#### SSM VPC PARAMETERS ####
-
 ssm_vpc_id = "/linuxtips-vpc/vpc/vpc_id"
+
+capabilities = ["EC2"]
 
 ssm_private_subnet_1 = "/linuxtips-vpc/private_subnet_1a"
 
