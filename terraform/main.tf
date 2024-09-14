@@ -1,5 +1,6 @@
 module "service" {
   source = "C:\Users\PC6483\Documents\linuxtips-aca-ecs-service-module"
+  region = var.region
 
   cluster_name = var.cluster_name
   service_name = var.service_name
@@ -8,6 +9,10 @@ module "service" {
   service_memory = var.service_memory
   service_listener = data.aws_ssm_parameter.listener.value
   service_task_execution_role = aws_iam_role.main.arn
+
+  environment_variables = var.environment_variables
+
+  capabilities = var.capabilities
 
   vpc_id = data.aws_ssm_parameter.vpc_id.value
     private_subnets =[
