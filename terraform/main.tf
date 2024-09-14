@@ -1,5 +1,5 @@
 module "service" {
-  source = "/git-repo/linuxtips-aca-ecs-service-module"
+  source = "./git-repo/linuxtips-aca-ecs-service-module"
   region = var.region
 
   cluster_name                = var.cluster_name
