@@ -18,7 +18,16 @@ ssm_listener = "/linutxtips/ecs/lb/listener"
 
 ssm_vpc_id = "/linuxtips-vpc/vpc/vpc_id"
 
-environment_variables = []
+environment_variables = [
+  {
+    name  = "foo"
+    value = "bar"
+  },
+  {
+    name  = "tico"
+    value = "teco"
+  }
+]
 
 capabilities = ["EC2"]
 
@@ -37,3 +46,7 @@ ssm_private_subnet_1 = "/linuxtips-vpc/private_subnet_1a"
 ssm_private_subnet_2 = "/linuxtips-vpc/private_subnet_1b"
 
 ssm_private_subnet_3 = "/linuxtips-vpc/private_subnet_1c"
+
+service_hosts = [
+  "chip.linutxtips.demo"
+]
