@@ -1,4 +1,4 @@
-region = "u-east-1"
+region = "us-east-1"
 
 cluster_name = "linuxtips-ecs-cluster"
 
