@@ -37,11 +37,11 @@ service_healthcheck = {
   port                = 8080
 }
 
-ssm_private_subnet_1 = "/linuxtips-vpc/private_subnet_1a"
+ssm_private_subnet_1 = "/linuxtips-vpc/vpc/private_subnet_1a"
 
-ssm_private_subnet_2 = "/linuxtips-vpc/private_subnet_1b"
+ssm_private_subnet_2 = "/linuxtips-vpc/vpc/private_subnet_1b"
 
-ssm_private_subnet_3 = "/linuxtips-vpc/private_subnet_1c"
+ssm_private_subnet_3 = "/linuxtips-vpc/vpc/private_subnet_1c"
 
 service_launch_type = "EC2"
 
