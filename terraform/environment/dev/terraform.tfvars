@@ -50,3 +50,7 @@ service_task_count = 3
 service_hosts = [
   "chip.linutxtips.demo"
 ]
+
+scale_type = "cpu"
+task_minimum = 3
+task_maximum = 12
