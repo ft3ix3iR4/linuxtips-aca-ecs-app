@@ -51,7 +51,7 @@ service_hosts = [
   "chip.linutxtips.demo"
 ]
 
-scale_type = "cpu"
+scale_type   = "cpu"
 task_minimum = 3
 task_maximum = 12
 

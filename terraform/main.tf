@@ -26,18 +26,18 @@ module "service" {
   ]
 
   ### autoscaling
-  scale_type = var.scale_type
+  scale_type   = var.scale_type
   task_minimum = var.task_maximum
   task_maximum = var.task_maximum
 
   ### autoscaling
 
-  scale_out_cpu_threshold = var.scale_out_cpu_threshold
-  scale_out_adjustment = var.scale_out_adjustment
+  scale_out_cpu_threshold       = var.scale_out_cpu_threshold
+  scale_out_adjustment          = var.scale_out_adjustment
   scale_out_comparison_operator = var.scale_out_comparison_operator
-  scale_out_statistic = var.scale_out_statistic
-  scale_out_period = var.scale_out_period
-  scale_out_evaluation_periods = var.scale_out_evaluation_periods
-  scale_out_cooldown = var.scale_out_cooldown
+  scale_out_statistic           = var.scale_out_statistic
+  scale_out_period              = var.scale_out_period
+  scale_out_evaluation_periods  = var.scale_out_evaluation_periods
+  scale_out_cooldown            = var.scale_out_cooldown
 
 }
