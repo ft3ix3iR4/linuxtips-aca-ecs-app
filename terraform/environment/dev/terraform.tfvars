@@ -48,7 +48,7 @@ service_launch_type = "EC2"
 service_task_count = 3
 
 service_hosts = [
-  "chip.linutxtips.demo"
+  "chip.linuxtips.demo"
 ]
 
 scale_type   = "cpu"
