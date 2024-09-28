@@ -47,11 +47,13 @@ service_launch_type = "EC2"
 
 service_task_count = 3
 
+ssm_alb = "/linuxtips/ecs/lb/id"
+
 service_hosts = [
   "chip.linuxtips.demo"
 ]
 
-scale_type   = "cpu_tracking"
+scale_type   = "requests_tracking"
 task_minimum = 3
 task_maximum = 12
 
@@ -79,4 +81,5 @@ scale_in_period              = 60
 scale_in_evaluation_periods  = 2
 scale_in_cooldown            = 60
 
-scale_tracking_cpu = 50
+scale_tracking_cpu      = 50
+scale_tracking_requests = 30
