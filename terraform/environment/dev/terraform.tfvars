@@ -10,7 +10,7 @@ service_cpu = 256
 
 service_memory = 512
 
-ssm_listener = "/linutxtips/ecs/lb/listener"
+ssm_listener = "/linuxtips/ecs/lb/listener"
 
 ssm_vpc_id = "/linuxtips-vpc/vpc/vpc_id"
 
@@ -70,3 +70,11 @@ scale_out_period = 60
 scale_out_evaluation_periods = 2
 
 scale_out_cooldown = 60
+
+scale_in_cpu_threshold       = 30
+scale_in_adjustment          = -1
+scale_in_comparison_operator = "LessThanOrEqualToThreshold"
+scale_in_statistic           = "Average"
+scale_in_period              = 60
+scale_in_evaluation_periods  = 2
+scale_in_cooldown            = 60
