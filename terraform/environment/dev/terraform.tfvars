@@ -43,7 +43,7 @@ ssm_private_subnet_2 = "/linuxtips-vpc/vpc/private_subnet_1b"
 
 ssm_private_subnet_3 = "/linuxtips-vpc/vpc/private_subnet_1c"
 
-service_launch_type = "EC2"
+service_launch_type = "FARGATE"
 
 service_task_count = 3
 
