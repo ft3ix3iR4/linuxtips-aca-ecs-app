@@ -43,7 +43,16 @@ ssm_private_subnet_2 = "/linuxtips-vpc/vpc/private_subnet_1b"
 
 ssm_private_subnet_3 = "/linuxtips-vpc/vpc/private_subnet_1c"
 
-service_launch_type = "FARGATE"
+service_launch_type = [
+  {
+    capacity_provider = "FARGATE"
+    weight            = 50
+  },
+  {
+    capacity_provider = "FARGATE_SPOT"
+    weight            = 50
+  }
+]
 
 service_task_count = 3
 
