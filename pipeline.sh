@@ -95,12 +95,11 @@ echo "BUILD - DOCKER PUBLISH"
 docker push $AWS_ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/$REPOSITORY_NAME:$GIT_COMMIT_HASH
 
 
-
 # APPLY DO TERRAFORM - CD
 
 cd ../terraform
 
-# REPOSITORY_TAG=$AWS_ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/$REPOSITORY_NAME:$GIT_COMMIT_HASH
+REPOSITORY_TAG=$AWS_ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/$REPOSITORY_NAME:$GIT_COMMIT_HASH
 
 echo "DEPLOY - TERRAFORM INIT"
 # terraform init -backend-config=environment/$BRANCH_NAME/backend.tfvars
