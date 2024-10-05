@@ -49,6 +49,7 @@ echo "BUILD - BUMP DE VERSAO"
 GIT_COMMIT_HASH=$(git rev-parse --short HEAD)
 echo $GIT_COMMIT_HASH
 
+
 echo "BUILD - LOGIN NO ECR"
 
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $AWS_ACCOUNT.dkr.ecr.us-east-1.amazonaws.com
@@ -95,22 +96,24 @@ docker push $AWS_ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/$REPOSITORY_NAME:$GIT_C
 
 
 
-# # APPLY DO TERRAFORM - CD
+# APPLY DO TERRAFORM - CD
 
-# cd ../terraform
+cd ../terraform
 
 # REPOSITORY_TAG=$AWS_ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/$REPOSITORY_NAME:$GIT_COMMIT_HASH
 
-# echo "DEPLOY - TERRAFORM INIT"
+echo "DEPLOY - TERRAFORM INIT"
 # terraform init -backend-config=environment/$BRANCH_NAME/backend.tfvars
+terraform init -backend-config=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/terraform/environment/dev/backend.tfvars
 
-
-# echo "DEPLOY - TERRAFORM PLAN"
+echo "DEPLOY - TERRAFORM PLAN"
 # terraform plan -var-file=environment/$BRANCH_NAME/terraform.tfvars -var container_image=$REPOSITORY_TAG
+terraform plan -var-file=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/terraform/environment/dev/terraform.tfvars -var container_image=REPOSITORY_TAG
 
-# echo "DEPLOY - TERRAFORM APPLY"
+echo "DEPLOY - TERRAFORM APPLY"
 # terraform apply --auto-approve -var-file=environment/$BRANCH_NAME/terraform.tfvars -var container_image=$REPOSITORY_TAG
+terraform apply -auto-approve -var-file=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/terraform/environment/dev/terraform.tfvars -var container_image=$REPOSITORY_TAG
 
-# echo "DEPLOY - WAIT DEPLOY"
+echo "DEPLOY - WAIT DEPLOY"
 
 # aws ecs wait services-stable --cluster $CLUSTER_NAME --services $APP_NAME
