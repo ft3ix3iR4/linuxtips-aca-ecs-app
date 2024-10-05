@@ -37,6 +37,7 @@ terraform fmt --recursive --check
 echo "TERRAFORM - VALIDATE"
 terraform validate
 
+
 terraform init -backend-config=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/terraform/environment/dev/backend.tfvars
 
 # BUILD APP 
