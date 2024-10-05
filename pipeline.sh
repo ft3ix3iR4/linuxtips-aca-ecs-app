@@ -104,15 +104,15 @@ cd ../terraform
 
 echo "DEPLOY - TERRAFORM INIT"
 # terraform init -backend-config=environment/$BRANCH_NAME/backend.tfvars
-terraform init -backend-config=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/terraform/environment/dev/backend.tfvars
+terraform init -backend-config=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/terraform/environment/$BRANCH_NAME/backend.tfvars
 
 echo "DEPLOY - TERRAFORM PLAN"
 # terraform plan -var-file=environment/$BRANCH_NAME/terraform.tfvars -var container_image=$REPOSITORY_TAG
-terraform plan -var-file=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/terraform/environment/dev/terraform.tfvars -var container_image=REPOSITORY_TAG
+terraform plan -var-file=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/terraform/environment/$BRANCH_NAME/terraform.tfvars -var container_image=REPOSITORY_TAG
 
 echo "DEPLOY - TERRAFORM APPLY"
 # terraform apply --auto-approve -var-file=environment/$BRANCH_NAME/terraform.tfvars -var container_image=$REPOSITORY_TAG
-terraform apply -auto-approve -var-file=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/terraform/environment/dev/terraform.tfvars -var container_image=$REPOSITORY_TAG
+terraform apply -auto-approve -var-file=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/terraform/environment/$BRANCH_NAME/terraform.tfvars -var container_image=$REPOSITORY_TAG
 
 echo "DEPLOY - WAIT DEPLOY"
 
