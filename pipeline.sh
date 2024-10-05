@@ -115,4 +115,4 @@ terraform apply -auto-approve -var-file=/mnt/hgfs/shared/git-repo/linuxtips-aca-
 
 echo "DEPLOY - WAIT DEPLOY"
 
-# aws ecs wait services-stable --cluster $CLUSTER_NAME --services $APP_NAME
+aws ecs wait services-stable --cluster $CLUSTER_NAME --services $APP_NAME
