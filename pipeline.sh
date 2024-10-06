@@ -34,7 +34,7 @@ cd ../terraform
 echo "TERRAFORM - FORMAT CHECK"
 terraform fmt --recursive --check
 
-terraform init -backend-config=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/environment/$BRANCH_NAME/backend.tfvars
+terraform init -backend-config=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/terraform/environment/$BRANCH_NAME/backend.tfvars
 
 echo "TERRAFORM - VALIDATE"
 terraform validate
