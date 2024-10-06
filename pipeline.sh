@@ -20,7 +20,6 @@ echo "APP - LINT"
 # go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.61.0
 curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.61.0
 golangci-lint run ./... -E errcheck
-# /root/go/bin/golangci-lint run ./... -E errcheck
 
 echo "APP - TEST"
 
