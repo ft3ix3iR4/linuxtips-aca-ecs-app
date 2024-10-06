@@ -9,7 +9,7 @@ func main() {
 	app := fiber.New()
 
 	app.Get("/version", func(c *fiber.Ctx) error {
-		return c.SendString("v3.5")
+		return c.SendString("v7")
 	})
 
 	app.Get("/healthcheck", func(c *fiber.Ctx) error {
