@@ -1,8 +1,12 @@
 package main
 
 import (
-	
+	"fmt"
+	"log"
+	"os"
+
 	"github.com/gofiber/fiber/v2"
+	"github.com/google/uuid"
 )
 
 func main() {
@@ -90,6 +94,10 @@ func main() {
 
 		return c.SendString(string(content))
 	})
+
+	// app.Get("/printenv", func(c *fiber.Ctx) error {
+	// 	return c.JSON(os.Environ())
+	// })
 
 	_ = app.Listen(":8080")
 }
