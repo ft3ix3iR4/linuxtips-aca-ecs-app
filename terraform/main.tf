@@ -1,5 +1,6 @@
 module "service" {
-  source = "github.com/ft3ix3iR4/linuxtips-aca-ecs-service-module?ref=v1"
+  source = "../../linuxtips-aca-ecs-service-module/"
+  # source = "github.com/ft3ix3iR4/linuxtips-aca-ecs-service-module?ref=v1"
   region = var.region
 
   cluster_name                = var.cluster_name
@@ -25,6 +26,16 @@ module "service" {
     data.aws_ssm_parameter.private_subnet_1.value,
     data.aws_ssm_parameter.private_subnet_2.value,
     data.aws_ssm_parameter.private_subnet_3.value,
+  ]
+
+  efs_volumes = [
+    {
+      volume_name      = "volume-exemplo"
+      file_system_id   = aws_efs_file_system.main.id
+      file_system_root = "/"
+      mount_point      = "/mnt/efs"
+      read_only        = false
+    }
   ]
 
   ### autoscaling
