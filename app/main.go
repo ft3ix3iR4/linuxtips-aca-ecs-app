@@ -95,9 +95,9 @@ func main() {
 		return c.SendString(string(content))
 	})
 
-	// app.Get("/printenv", func(c *fiber.Ctx) error {
-	// 	return c.JSON(os.Environ())
-	// })
+	app.Get("/printenv", func(c *fiber.Ctx) error {
+		return c.JSON(os.Environ())
+	})
 
 	_ = app.Listen(":8080")
 }

@@ -22,6 +22,10 @@ environment_variables = [
   {
     name  = "tico"
     value = "teco"
+  },
+  {
+    name  = "DB_PASS"
+    value = "abc1234"
   }
 ]
 
