@@ -10,7 +10,9 @@ service_cpu = 256
 
 service_memory = 512
 
-ssm_listener = "/linuxtips/ecs/lb/listener"
+ssm_listener = "/linuxtips/ecs/lb/internal/listener"
+
+ssm_alb = "/linuxtips/ecs/lb/internal/id"
 
 ssm_vpc_id = "/linuxtips-vpc/vpc/vpc_id"
 
@@ -22,6 +24,10 @@ environment_variables = [
   {
     name  = "tico"
     value = "teco"
+  },
+  {
+    name  = "DB_PASS"
+    value = "abc1234"
   }
 ]
 
@@ -56,10 +62,9 @@ service_launch_type = [
 
 service_task_count = 3
 
-ssm_alb = "/linuxtips/ecs/lb/id"
-
 service_hosts = [
-  "app.linuxtips.demo"
+  # "app.linuxtips.demo"
+  "app.linuxtips-ecs-cluster.internal.com"
 ]
 
 scale_type   = "requests_tracking"
@@ -92,3 +97,5 @@ scale_in_cooldown            = 60
 
 scale_tracking_cpu      = 50
 scale_tracking_requests = 30
+
+ssm_service_discovery_namespace = "/linuxtips/ecs/cloudmap/namespace"

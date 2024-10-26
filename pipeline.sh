@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # SETUP INICIAL
 set -e
@@ -19,7 +19,7 @@ echo "APP - LINT"
 
 # go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.61.0
 curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.61.0
-/root/go/bin/golangci-lint run ./... -E errcheck
+golangci-lint run ./... -E errcheck
 
 echo "APP - TEST"
 
@@ -34,11 +34,11 @@ cd ../terraform
 echo "TERRAFORM - FORMAT CHECK"
 terraform fmt --recursive --check
 
+terraform init -backend-config=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/terraform/environment/$BRANCH_NAME/backend.tfvars
+
 echo "TERRAFORM - VALIDATE"
 terraform validate
 
-
-terraform init -backend-config=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/terraform/environment/dev/backend.tfvars
 
 # BUILD APP 
 
@@ -95,25 +95,21 @@ echo "BUILD - DOCKER PUBLISH"
 docker push $AWS_ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/$REPOSITORY_NAME:$GIT_COMMIT_HASH
 
 
-
 # APPLY DO TERRAFORM - CD
 
 cd ../terraform
 
-# REPOSITORY_TAG=$AWS_ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/$REPOSITORY_NAME:$GIT_COMMIT_HASH
+REPOSITORY_TAG=$AWS_ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/$REPOSITORY_NAME:$GIT_COMMIT_HASH
 
 echo "DEPLOY - TERRAFORM INIT"
-# terraform init -backend-config=environment/$BRANCH_NAME/backend.tfvars
-terraform init -backend-config=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/terraform/environment/dev/backend.tfvars
+terraform init -backend-config=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/terraform/environment/$BRANCH_NAME/backend.tfvars
 
 echo "DEPLOY - TERRAFORM PLAN"
-# terraform plan -var-file=environment/$BRANCH_NAME/terraform.tfvars -var container_image=$REPOSITORY_TAG
-terraform plan -var-file=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/terraform/environment/dev/terraform.tfvars -var container_image=REPOSITORY_TAG
+terraform plan -var-file=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/terraform/environment/$BRANCH_NAME/terraform.tfvars -var container_image=REPOSITORY_TAG
 
 echo "DEPLOY - TERRAFORM APPLY"
-# terraform apply --auto-approve -var-file=environment/$BRANCH_NAME/terraform.tfvars -var container_image=$REPOSITORY_TAG
-terraform apply -auto-approve -var-file=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/terraform/environment/dev/terraform.tfvars -var container_image=$REPOSITORY_TAG
+terraform apply -auto-approve -var-file=/mnt/hgfs/shared/git-repo/linuxtips-aca-ecs-app/terraform/environment/$BRANCH_NAME/terraform.tfvars -var container_image=$REPOSITORY_TAG
 
 echo "DEPLOY - WAIT DEPLOY"
 
-# aws ecs wait services-stable --cluster $CLUSTER_NAME --services $APP_NAME
+aws ecs wait services-stable --cluster $CLUSTER_NAME --services $APP_NAME
