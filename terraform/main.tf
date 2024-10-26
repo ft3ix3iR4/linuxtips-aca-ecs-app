@@ -78,4 +78,4 @@ module "service" {
   scale_tracking_requests = var.scale_tracking_requests
 
   service_discovery_namespace = data.aws_ssm_parameter.service_discovery_namespace.value
-  }
+}
